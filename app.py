@@ -75,7 +75,7 @@ def predict():
     if pickModel == 0:
         pred = ValuePredictor_LR(final_input)
     else:
-        ValuePredictor_SVM(final_input)
+        pred = ValuePredictor_SVM(final_input)
     #return pred
     #print(pred)
 

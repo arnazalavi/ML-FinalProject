@@ -10,6 +10,7 @@
   
 </head>
 <body>
+  <div class="container">
 <div class="row">
   <div class="col-md-12">
     <h4> <b> Titanic Predition Results </b></h4>
@@ -22,11 +23,31 @@
 
     <h3>Results</h3>
  
-<div>
- 
-  <p>
-     Input Data + Prediction = {{prediction_LR}}
-  </p>
+<div class="row">
+  <div class="col-md-12">
+  <table class="table"> 
+    <tr>
+    <th>AGE</th>
+    <th>PASSENGER CLASS</th>
+    <th>SEX</th>
+    <th>PARCH</th>
+    <th>SIBBLING  </th>
+    <th>FARE</th>
+    <th>PREDICTION</th>
+  </tr>
+<tr>
+  <td> {{prediction_model.age}}</td>
+  <td>{{prediction_model.Passenger_Class}}</td>
+  <td>{{prediction_model.Sex}}</td>
+  <td>{{prediction_model.parch}}</td>
+  <td>{{prediction_model.sibsp}}</td>
+  <td>{{prediction_model.Fare}}</td>
+  <td>{{prediction_model.Prediction}}</td>
+
+</tr>
+  </table>
+</div>
+</div>
 </div>
 </body>
 </html>

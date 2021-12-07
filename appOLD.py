@@ -7,26 +7,26 @@ import pandas as pd
 
 app = Flask(__name__)
 
+# Prediction Method for LogisticRegression
 def ValuePredictor_LR(final_input):
     col_list = ["pclass",	"sex",	"age"	,"sibsp" ,"	parch"	,"fare"]
     #model_LogisticRegression = pickle.load('titanicData.pkl')
     #titanicData_Scaler.pkl
     print(final_input)
     print("Inside LR")
-    #Loading the saved decision tree model pickle
+    #Loading the saved  Logistic Regression model pickle
     Logistic_model_pkl  = open('titanicData_LR.pkl', 'rb')
     LogisticReg_model = pickle.load(Logistic_model_pkl )
     pred = LogisticReg_model.predict(final_input)
     print ("Logistic Regression model :: ", pred)
     return pred
 
+# Prediction Method for SVM
 def ValuePredictor_SVM(final_input):
-    #col_list = ["pclass",	"sex",	"age"	,"sibsp" ,"	parch"	,"fare"]
-    #model_LogisticRegression = pickle.load('titanicData.pkl')
-    #titanicData_Scaler.pkl
+   
     print("Inside LR")
     print(final_input)
-    #Loading the saved decision tree model pickle
+    #Loading the saved  SVM model pickle
     SVM_model_pkl  = open('titanicData_SVM.pkl', 'rb')
     SVM_model = pickle.load(SVM_model_pkl )
     pred = SVM_model.predict(final_input)
@@ -43,11 +43,8 @@ def index():
 def predict():
 
     if request.method == 'POST':
-     #parse form request in json format
-     #parse_request = request.json
-     #print(json.dumps(parse_request, indent=4, sort_keys=True))
-     #ValuePredictor(parse_request)
-     #  
+     #parse form request format
+     
      pickModel =  int(request.form["Pick_model"])
      age = float(request.form["age"])
      pclass = int(request.form["pclass"])
@@ -66,19 +63,14 @@ def predict():
 
     print(fare)
     new_titanic_data =[age,pclass,gender,parch,sibsp,fare]
-    #ValuePredictor_LR(new_titanic_data)
-    #return jsonify(age)
-    #return jsonify(new_titanic_data)
-     #array to pass 
+   
     final_input = [np.array( new_titanic_data)]
 
     if pickModel == 0:
         pred = ValuePredictor_LR(final_input)
     else:
         pred = ValuePredictor_SVM(final_input)
-    #return pred
-    #print(pred)
-
+  
     Final_output = round(pred[0], 2)
     print(Final_output)
     if Final_output == 0:

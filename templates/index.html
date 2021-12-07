@@ -15,6 +15,12 @@
  
 <div>
   <form action="/predict" method="POST">
+    <label for="Model_Pick">Please_Pick_model</label>
+  <select id="Pick_model" name="Pick_model">
+      <option value="0">Logistic Regression</option>
+      <option value="1">SVM</option>
+    </select>
+    <br>
     <label for="age">Age</label>
     <input type="text" id="age" name="age">
     <br>
